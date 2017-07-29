@@ -54,6 +54,9 @@
 \newcommand*{\academictitle}[1]{
 	\def\@cvacademictitle{#1}
 }
+\newcommand*{\cvtopic}[1]{
+    \def\@cvtopic{#1}
+}
 \renewcommand*{\title}[1]{
 	\def\@cvtitle{#1}
 }

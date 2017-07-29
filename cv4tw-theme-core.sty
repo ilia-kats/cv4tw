@@ -52,6 +52,20 @@
 
 \AtBeginDocument{\maketitle}
 
+\hypersetup{
+    bookmarks=true,
+    breaklinks=true,
+    colorlinks=false,
+    pdfborder={0 0 0},
+}
+
+\AtEndPreamble{
+    \hypersetup{
+        pdftitle={\@cvfirstname\ \@cvlastname\@ifundefined{@cvacademictitle}{}{, \@cvacademictitle} -- \@ifundefined{@cvtopic}{}{\@cvtopic}},
+        pdfauthor={\@cvfirstname\ \@cvlastname\@ifundefined{@cvacademictitle}{}{, \@cvacademictitle}},
+    }
+}
+
 % Set \emph command with "em" color
 \DeclareTextFontCommand{\emph}{\color{main}}
 
