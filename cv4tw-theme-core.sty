@@ -65,8 +65,9 @@
 
 
 %Useful lengths
+\newlength{\cvhspace}\setlength{\cvhspace}{2ex}
 \newlength{\cvleftwidth}\setlength{\cvleftwidth}{4.5cm}
-\newlength{\cvrightwidth}\setlength{\cvrightwidth}{14cm}
+\newlength{\cvrightwidth}\setlength{\cvrightwidth}{\textwidth - \cvleftwidth - \cvhspace}
 \newlength{\cvfielditemparskip}\setlength{\cvfielditemparskip}{0.5em}
 \newlength{\cvskillitemparskip}\setlength{\cvskillitemparskip}{-0.8em}
 \newlength{\cvmissionsitemsep}\setlength{\cvmissionsitemsep}{0em}
@@ -94,22 +95,21 @@
 \renewcommand*{\story}[5]{
 	\begin{flushleft}
 	\begin{minipage}[t]{\cvleftwidth}
-		{\mystyle[cvstorydatelocation] #3}
+		{\mystyle[cvstorydatelocation]#3}
 		\if\relax\detokenize{#4}\relax
 		\relax
 		\else 
-			\\[1em]
-			{\mystyle[cvstoryquicknotes] #4}
+			\\[0.3em]
+			{\mystyle[cvstoryquicknotes]#4}
 		\fi
-	\end{minipage}
+	\end{minipage}\hspace{\cvhspace}%
 	\begin{minipage}[t]{\cvrightwidth}
-  		\vspace*{-0.7em}
-		{\mystyle[cvstorytitle] #1}{\mystyle[cvstoryshort],~#2}
+		{\leavevmode\mystyle[cvstorytitle]#1}{\mystyle[cvstoryshort],~#2}
 		\if\relax\detokenize{#5}\relax
 		\relax
 		\else
-			\\[0.8em]
-			{\mystyle[cvstorydescription] #5}
+			\\[0.3em]
+			{\mystyle[cvstorydescription]#5}
 		\fi
 	\end{minipage}
 	\end{flushleft}
@@ -154,16 +154,16 @@
 
 % Describe missions related to a job
 \renewenvironment*{missions}{
-	\begin{list}{\mystyle[missionbullet]}{ \setlength{\itemsep}{\cvmissionsitemsep} \setlength{\leftmargin}{2em}\mystyle[mission] }
+	\begin{list}{\mystyle[missionbullet]}{\setlength{\topsep}{\parsep}\setlength{\itemsep}{\cvmissionsitemsep}\setlength{\leftmargin}{2em}\mystyle[mission]}
 }{
 	\end{list}
 }
 
 % Skills environment (use \skill command to add items)
 \renewenvironment*{skills}[1]{ 
-	\newcommand*{\skill}[2][]{ ##1\hspace*{2ex} & ##2 \\[\cvskillitemparskip] }
+	\newcommand*{\skill}[2][]{ ##1 & ##2 \\[\cvskillitemparskip] }
 	\begin{minipage}[t]{\textwidth}
-	{\hspace*{\cvleftwidth}\mystyle[subsectiontitle] #1}\\[-0.4em]
-	\begin{tabular}[t]{@{}>{\mystyle[cvskillname]\hfill}p{\cvleftwidth}@{}>{\mystyle[cvskilldescription]}p{\cvrightwidth}@{}} } 
+	{\hspace*{\cvleftwidth}\hspace*{\cvhspace}\mystyle[subsectiontitle]#1}\\[-0.4em]
+	\begin{tabular}[t]{@{}>{\mystyle[cvskillname]\hfill}p{\cvleftwidth}@{\hspace{\cvhspace}}>{\mystyle[cvskilldescription]}p{\cvrightwidth}@{}} } 
 	{ \end{tabular}\\[2em] \end{minipage} }
 \endinput

@@ -17,7 +17,7 @@
 	\@ifundefined{@cvpicture}{}{\begin{minipage}[m]{\cvpicturewidth}\fboxsep=1mm\fboxrule=0.05pt\fcolorbox{black}{white}{\includegraphics[keepaspectratio=true,width=\cvpicturewidth]{\@cvpicture}}\end{minipage}\hspace{2ex}}
 	\begin{minipage}[m]{\cvtitlewidth}
 	\mystyle[name]\color{contrast}{\@ifundefined{@cvacademictitle}{}{\small\@cvacademictitle~}}\@cvfirstname~\@cvlastname
-	\@ifundefined{@cvtitle}{}{{\\\mystyle[title]\color{contrast}\@cvtitle}}
+	\@ifundefined{@cvtitle}{}{{\\\mystyle[title]\color{contrast}\@cvtitle\par}}
 	\end{minipage}\hfill
 	\begin{minipage}[m]{\cvassetspanelwidth}
 		\ifcvasset[0]{\begin{list}{\mystyle[assetbullet]}{\setlength{\leftmargin}{\cvassetspanelleftmargin}}
@@ -50,8 +50,7 @@
 	\begin{minipage}[t]{0.3\textwidth} \begin{tabular}[t]{@{}c@{}l@{}}
 \cvcontactszone[extra]
 \end{tabular}
-	\end{minipage}\\
-\\[1em]
+	\end{minipage}
 }
 
 \renewcommand*{\renderasset}[1]{\item{\mystyle[asset]\color{contrast} \cvasset[#1]}}
