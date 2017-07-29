@@ -3,7 +3,6 @@
 \NeedsTeXFormat{LaTeX2e}
 \LoadClassWithOptions{article}
 \ProvidesClass{cv4tw}[2014/05/27 v0.2 LaTeX CV class, with assets, social networks, and customizable styles]
-\RequirePackage{newenviron}
 \RequirePackage{etoolbox}
 \RequirePackage{xcolor}
 %\RequirePackage{navigator}
