@@ -101,6 +101,8 @@
 {linkedin}{\qdlink{https://www.linkedin.com/in/}{cvcontact#1}{}}%
 {twitter}{\qdlink{https://www.twitter.com/}{cvcontact#1}{}}%
 {github}{\qdlink{https://www.github.com/}{cvcontact#1}{}}%
+{orcid}{\qdlink{https://orcid.org/}{cvcontact#1}{}}%
+{researchgate}{\qdlink{http://www.researchgate.net/profile/}{cvcontact#1}{}}
 {facebook}{\qdlink{https://www.facebook.com/}{cvcontact#1}{}}%
 {googleplus}{\qdlink{https://plus.google.com/}{cvcontact#1}{}}%
 }[{\qdget{cvcontact#1}}]
