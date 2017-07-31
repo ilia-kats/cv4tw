@@ -1,8 +1,12 @@
 %Useful lengths
 \newlength{\cvtitlewidth}\setlength{\cvtitlewidth}{8cm}
-\newlength{\cvnamewidth}\setlength{\cvnamewidth}{5cm}
+\newlength{\cvnamewidth}\setlength{\cvnamewidth}{4cm}
 \newlength{\cvpicturewidth}\setlength{\cvpicturewidth}{2.4cm}
-\newlength{\cvassetspanelwidth}
+\newlength{\cvassetspanelwidth}\setlength{\cvassetspanelwidth}{0.25\paperwidth}
+\newlength{\cvcontactspanelwidth}
+\newcommand*{\cvmaincontactspanelfactor}{0.3}
+\newcommand*{\cvsocialcontactspanelfactor}{0.3}
+\newcommand*{\cvextracontactspanelfactor}{0.3}
 \newlength{\cvassetitemsep}\setlength{\cvassetitemsep}{0.3em}
 \newlength{\cvassetspanelleftmargin}\setlength{\cvassetspanelleftmargin}{1cm}
 \newlength{\cvcontactpanelwidth}\setlength{\cvcontactpanelwidth}{7cm}
@@ -17,12 +21,13 @@
     \begin{minipage}{\paperwidth}%
         \vspace*{2\cvassetitemsep}%
         \leavevmode\color{contrast}%
-        \setlength{\cvassetspanelwidth}{\textwidth - \cvnamewidth - \marginparwidth}%
+        \setlength{\cvcontactspanelwidth}{\textwidth - \cvnamewidth - \marginparwidth}%
         \@ifundefined{@cvpicture}%
             {}%
             {%
-                \setlength{\cvassetspanelwidth}{\cvassetspanelwidth - \cvpicturewidth - \cvhspace}%
+                \setlength{\cvcontactspanelwidth}{\cvcontactspanelwidth - \cvpicturewidth - \cvhspace}%
                 \begin{minipage}[t]{\cvpicturewidth}%
+                    \vspace{0pt}%
                     \fboxsep=1mm\fboxrule=0.05pt\fcolorbox{black}{white}{\includegraphics[keepaspectratio=true,width=\cvpicturewidth]{\@cvpicture}}%
                 \end{minipage}%
             \hspace{\cvhspace}}%
@@ -31,21 +36,21 @@
             \leavevmode\mystyle{name}\color{contrast}{\@ifundefined{@cvacademictitle}{}{\small\@cvacademictitle~}}\@cvfirstname~\@cvlastname
             \@ifundefined{@cvtitle}{}{{\\\mystyle{title}\color{contrast}\@cvtitle\par}}
         \end{minipage}
-        \begin{minipage}[t]{0.3\cvassetspanelwidth}
+        \begin{minipage}[t]{\cvmaincontactspanelfactor\cvcontactspanelwidth}
             \vspace{0pt}
             \begin{tabular}[t]{@{}c@{}l@{}}
                 \cvcontactszone{main}
             \end{tabular}
         \end{minipage}
         \hfill
-        \begin{minipage}[t]{0.3\cvassetspanelwidth}
+        \begin{minipage}[t]{\cvsocialcontactspanelfactor\cvcontactspanelwidth}
             \vspace{0pt}
             \begin{tabular}[t]{@{}c@{}l@{}}
                 \cvcontactszone{social}
             \end{tabular}
         \end{minipage}
         \hfill
-        \begin{minipage}[t]{0.3\cvassetspanelwidth}
+        \begin{minipage}[t]{\cvextracontactspanelfactor\cvcontactspanelwidth}
             \vspace{0pt}
             \begin{tabular}[t]{@{}c@{}l@{}}
                 \cvcontactszone{extra}
@@ -55,12 +60,36 @@
     \vspace*{2\cvassetitemsep}
 	\end{minipage}}
 	\colorlet{icons}{iconstemp}
-	\@ifundefined{@cvquote}{}{{\centering\mystyle{quote}\@cvquote\\[2ex]}}
+    \@ifundefined{@cvquote}{}{\\[\cvassetitemsep]\centering\mystyle{quote}\@cvquote\\[\cvassetitemsep]}
+        \ifcvasset{0}{%
+            \vspace*{2\cvassetitemsep}
+            \hfill%
+            \begin{minipage}[t]{\cvassetspanelwidth}%
+            \begin{tabular}[t]{@{}c@{}l@{}}
+                \renderassetifdefined{0}
+                \renderassetifdefined{2}
+                \renderassetifdefined{4}
+                \renderassetifdefined{6}
+                \renderassetifdefined{8}
+            \end{tabular}
+            \end{minipage}\hfill%
+            \begin{minipage}[t]{\cvassetspanelwidth}%
+            \begin{tabular}[t]{@{}c@{}l@{}}
+                \renderassetifdefined{1}
+                \renderassetifdefined{3}
+                \renderassetifdefined{5}
+                \renderassetifdefined{7}
+                \renderassetifdefined{9}
+            \end{tabular}%
+            \end{minipage}%
+            \hfill%
+        }
+        {}
 }
 
-\renewcommand*{\renderasset}[1]{\item{\mystyle{asset}\color{contrast} \cvasset[#1]}}
+\renewcommand*{\renderasset}[1]{\mystyle{assetbullet} & \begin{tabular}[t]{>{\mystyle{asset}\color{main}}l}\cvasset{#1}\end{tabular}\\[\cvassetitemsep]}
 
-\renewcommand*{\renderassetifdefined}[1]{\ifcvasset[#1]{\renderasset{#1}}{\ignorespaces}}
+\renewcommand*{\renderassetifdefined}[1]{\ifcvasset{#1}{\renderasset{#1}}{}}
 
 \renewcommand*{\rendercontact}[1]{\mystyle{#1bullet} & \begin{tabular}[t]{>{\mystyle{#1}}l}\cvcontactlink{#1}\end{tabular}\\[\cvassetitemsep]}
 
