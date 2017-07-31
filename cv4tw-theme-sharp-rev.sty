@@ -53,8 +53,7 @@
             \begin{tabular}[t]{@{}c@{}l@{}}
                 \cvcontactszone{extra}
             \end{tabular}
-        \end{minipage}
-    %
+        \end{minipage}%
     \vspace*{2\cvassetitemsep}
     \end{minipage}\hspace*{\marginparwidth}}
 	\colorlet{icons}{iconstemp}
@@ -89,7 +88,7 @@
 
 \renewcommand*{\renderassetifdefined}[1]{\ifcvasset{#1}{\renderasset{#1}}{}}
 
-\renewcommand*{\rendercontact}[1]{\mystyle{#1bullet} & \mystyle{#1}\cvcontactlink{#1}\\[\cvassetitemsep]}
+\renewcommand*{\rendercontact}[1]{\mystyle{#1bullet} & \begin{tabular}[t]{>{\mystyle{#1}}l}\cvcontactlink{#1}\end{tabular}\\[\cvassetitemsep]}
 
 \renewcommand*{\rendercontactifdefined}[1]{\ifcvcontact{#1}{\rendercontact{#1}}{}}
 
