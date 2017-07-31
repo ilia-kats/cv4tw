@@ -18,10 +18,10 @@
 	\colorlet{iconstemp}{icons}%
 	\colorlet{icons}{contrast}%
 	\hspace*{-1\marginparwidth}\fboxsep0pt\colorbox{title}{\hspace*{\marginparwidth}%
-    \begin{minipage}{\paperwidth}%
-        \vspace*{2\cvassetitemsep}%
+    \begin{minipage}{\textwidth}%
+        \vspace*{2\cvassetitemsep}%%
         \leavevmode\color{contrast}%
-        \setlength{\cvcontactspanelwidth}{\textwidth - \cvnamewidth - \marginparwidth}%
+        \setlength{\cvcontactspanelwidth}{\textwidth - \cvnamewidth}%
         \@ifundefined{@cvpicture}%
             {}%
             {%
@@ -35,30 +35,28 @@
             \vspace{0pt}%
             \leavevmode\mystyle{name}\color{contrast}{\@ifundefined{@cvacademictitle}{}{\small\@cvacademictitle~}}\@cvfirstname~\@cvlastname
             \@ifundefined{@cvtitle}{}{{\\\mystyle{title}\color{contrast}\@cvtitle\par}}
-        \end{minipage}
+        \end{minipage}%
         \begin{minipage}[t]{\cvmaincontactspanelfactor\cvcontactspanelwidth}
             \vspace{0pt}
             \begin{tabular}[t]{@{}c@{}l@{}}
                 \cvcontactszone{main}
-            \end{tabular}
-        \end{minipage}
-        \hfill
+            \end{tabular}\hfill
+        \end{minipage}%\hfill%
         \begin{minipage}[t]{\cvsocialcontactspanelfactor\cvcontactspanelwidth}
-            \vspace{0pt}
+            \vspace{0pt}\hfill
             \begin{tabular}[t]{@{}c@{}l@{}}
                 \cvcontactszone{social}
-            \end{tabular}
-        \end{minipage}
-        \hfill
+            \end{tabular}\hfill
+        \end{minipage}%\hfill%
         \begin{minipage}[t]{\cvextracontactspanelfactor\cvcontactspanelwidth}
-            \vspace{0pt}
+            \vspace{0pt}\hfill
             \begin{tabular}[t]{@{}c@{}l@{}}
                 \cvcontactszone{extra}
             \end{tabular}
         \end{minipage}
-    \hspace*{\marginparwidth}%
+    %
     \vspace*{2\cvassetitemsep}
-	\end{minipage}}
+    \end{minipage}\hspace*{\marginparwidth}}
 	\colorlet{icons}{iconstemp}
     \@ifundefined{@cvquote}{}{\\[\cvassetitemsep]\centering\mystyle{quote}\@cvquote\\[\cvassetitemsep]}
         \ifcvasset{0}{%
@@ -91,7 +89,7 @@
 
 \renewcommand*{\renderassetifdefined}[1]{\ifcvasset{#1}{\renderasset{#1}}{}}
 
-\renewcommand*{\rendercontact}[1]{\mystyle{#1bullet} & \begin{tabular}[t]{>{\mystyle{#1}}l}\cvcontactlink{#1}\end{tabular}\\[\cvassetitemsep]}
+\renewcommand*{\rendercontact}[1]{\mystyle{#1bullet} & \mystyle{#1}\cvcontactlink{#1}\\[\cvassetitemsep]}
 
 \renewcommand*{\rendercontactifdefined}[1]{\ifcvcontact{#1}{\rendercontact{#1}}{}}
 
