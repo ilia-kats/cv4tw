@@ -12,7 +12,7 @@
 \RequirePackage{array}
 \RequirePackage{forloop}
 
-\setcvcontactszone[main]{%
+\setcvcontactszone{main}{%
 \rendercontactifdefined{custom0}%
 \rendercontactifdefined{custom1}%
 \rendercontactifdefined{custom2}%
@@ -26,7 +26,7 @@
 \rendercontactifdefined{fax}%
 }%
 
-\setcvcontactszone[social]{%
+\setcvcontactszone{social}{%
 \rendercontactifdefined{custom3}%
 \rendercontactifdefined{custom4}%
 \rendercontactifdefined{custom5}%
@@ -40,7 +40,7 @@
 \rendercontactifdefined{vk}%
 \rendercontactifdefined{pinterest}%
 }%
-\setcvcontactszone[extra]{%
+\setcvcontactszone{extra}{%
 \rendercontactifdefined{custom6}%
 \rendercontactifdefined{custom7}%
 \rendercontactifdefined{custom8}%
@@ -74,9 +74,9 @@
  \renewcommand{\headrulewidth}{0pt}
  \renewcommand{\footrulewidth}{0pt}
  \fancyhf{}
- \lfoot{\mystyle[footnote]\@cvfirstname~\@cvlastname}
- \cfoot{\mystyle[footnote]\@ifundefined{@cvtitle}{}{\@cvtitle}}
- \rfoot{\mystyle[footnote]\thepage/\pageref{LastPage}}
+ \lfoot{\mystyle{footnote}\@cvfirstname~\@cvlastname}
+ \cfoot{\mystyle{footnote}\@ifundefined{@cvtitle}{}{\@cvtitle}}
+ \rfoot{\mystyle{footnote}\thepage/\pageref{LastPage}}
 }
 \pagestyle{cvsimple}
 
@@ -103,7 +103,7 @@
 \renewcommand*{\section}[1]{
 \needspace{4\baselineskip}
 \begin{center}
-  {\mystyle[sectiontitle] #1}\\[-0.8em]
+  {\mystyle{sectiontitle} #1}\\[-0.8em]
   {\color{sectionrule}\rule{\sectionrule}{0.05pt}}
 \end{center}
 }
@@ -112,21 +112,21 @@
 \renewcommand*{\story}[5]{
 	\begin{flushleft}
 	\begin{minipage}[t]{\cvleftwidth}
-		{\mystyle[cvstorydatelocation]#3}
+		{\mystyle{cvstorydatelocation}#3}
 		\if\relax\detokenize{#4}\relax
 		\relax
 		\else 
 			\\[0.3em]
-			{\mystyle[cvstoryquicknotes]#4}
+			{\mystyle{cvstoryquicknotes}#4}
 		\fi
 	\end{minipage}\hspace{\cvhspace}%
 	\begin{minipage}[t]{\cvrightwidth}
-		{\leavevmode\mystyle[cvstorytitle]#1}{\mystyle[cvstoryshort],~#2}
+		{\leavevmode\mystyle{cvstorytitle}#1}{\mystyle{cvstoryshort},~#2}
 		\if\relax\detokenize{#5}\relax
 		\relax
 		\else
 			\\[0.3em]
-			{\mystyle[cvstorydescription]#5}
+			{\mystyle{cvstorydescription}#5}
 		\fi
 	\end{minipage}
 	\end{flushleft}
@@ -148,8 +148,8 @@
 			\stepcounter{fieldscurrentcolumn}
 			\expandafter\@secondoftwo
 		\fi
-		{{\mystyle[field] ##1} & ##2 \\[\cvfielditemparskip] }
-		{{\mystyle[field] ##1} & ##2 & }
+		{{\mystyle{field} ##1} & ##2 \\[\cvfielditemparskip] }
+		{{\mystyle{field} ##1} & ##2 & }
 			
 	\makeatother
 	}
@@ -157,12 +157,12 @@
 	\newcommand*{\field}[2]{
 		\formatfieldcell{##1}{
 			\forloop{currentrate}{0}{\value{currentrate} < #3}{
-			\ifnum##2>\value{currentrate}\mystyle[fieldratefull]\else\mystyle[fieldrateempty]\fi
+			\ifnum##2>\value{currentrate}\mystyle{fieldratefull}\else\mystyle{fieldrateempty}\fi
 			}
 		}
 	}
 	\begin{minipage}[t]{\textwidth}
-	{\hspace*{\cvleftwidth}\mystyle[subsectiontitle] #1}\\[1.5em]
+	{\hspace*{\cvleftwidth}\mystyle{subsectiontitle} #1}\\[1.5em]
 	\begin{tabular}[t]{*{#2}{rl}}
 }{
 	\end{tabular}\\[2em]
@@ -171,7 +171,7 @@
 
 % Describe missions related to a job
 \renewenvironment*{missions}{
-	\begin{list}{\mystyle[missionbullet]}{\setlength{\topsep}{\parsep}\setlength{\itemsep}{\cvmissionsitemsep}\setlength{\leftmargin}{2em}\mystyle[mission]}
+	\begin{list}{\mystyle{missionbullet}}{\setlength{\topsep}{\parsep}\setlength{\itemsep}{\cvmissionsitemsep}\setlength{\leftmargin}{2em}\mystyle{mission}}
 }{
 	\end{list}
 }
@@ -180,7 +180,7 @@
 \renewenvironment*{skills}[1]{ 
 	\newcommand*{\skill}[2][]{ ##1 & ##2 \\[\cvskillitemparskip] }
 	\begin{minipage}[t]{\textwidth}
-	{\hspace*{\cvleftwidth}\hspace*{\cvhspace}\mystyle[subsectiontitle]#1}\\[-0.4em]
-	\begin{tabular}[t]{@{}>{\mystyle[cvskillname]\hfill}p{\cvleftwidth}@{\hspace{\cvhspace}}>{\mystyle[cvskilldescription]}p{\cvrightwidth}@{}} } 
+	{\hspace*{\cvleftwidth}\hspace*{\cvhspace}\mystyle{subsectiontitle}#1}\\[-0.4em]
+	\begin{tabular}[t]{@{}>{\mystyle{cvskillname}\hfill}p{\cvleftwidth}@{\hspace{\cvhspace}}>{\mystyle{cvskilldescription}}p{\cvrightwidth}@{}} } 
 	{ \end{tabular}\\[2em] \end{minipage} }
 \endinput

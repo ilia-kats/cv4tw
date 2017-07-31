@@ -77,22 +77,22 @@
 	\RequirePackage[]{cv4tw-theme-#2}
 }
 
-\newcommand*{\setmystyle}[2][]{\expandafter\qdset{mystyle#1}{#2}}
-\newcommand*{\mystyle}[1][]{\ignorespaces\qdget{mystyle#1}}
-\newcommand*{\setmylength}[3][]{\expandafter\qdsetlength{#1}{#2}{#3}}
+\newcommand*{\setmystyle}[2]{\expandafter\qdset{mystyle#1}{#2}}
+\newcommand*{\mystyle}[1]{\ignorespaces\qdget{mystyle#1}}
+\newcommand*{\setmylength}[3]{\expandafter\qdsetlength{#1}{#2}{#3}}
 %\newcommand*{\getmylength}[2][]{\expandafter\qdgetlength{#1}{#2}}
 %\newcommand*{\applymylength}[2][]{\ignorespaces\qdapplylength{#1}{#2}}
 \raggedbottom
 \onecolumn
 \pagestyle{empty}
 
-\newcommand*{\setcvasset}[2][]{\expandafter\qdset{cvasset#1}{#2}}
-\newcommand*{\cvasset}[1][]{\qdget{cvasset#1}}
-\newcommand*{\ifcvasset}[3][]{\qdif{cvasset#1}{#2}{#3}}
-\newcommand*{\setcvcontactszone}[2][]{\expandafter\qdset{cvcontactszone#1}{#2}}
-\newcommand*{\cvcontactszone}[1][]{\qdget{cvcontactszone#1}}
-\newcommand*{\setcvcontact}[2][]{\expandafter\qdset{cvcontact#1}{#2}}
-\newcommand*{\cvcontact}[1][]{\qdget{cvcontact#1}}
+\newcommand*{\setcvasset}[2]{\expandafter\qdset{cvasset#1}{#2}}
+\newcommand*{\cvasset}[1]{\qdget{cvasset#1}}
+\newcommand*{\ifcvasset}[3]{\qdif{cvasset#1}{#2}{#3}}
+\newcommand*{\setcvcontactszone}[2]{\expandafter\qdset{cvcontactszone#1}{#2}}
+\newcommand*{\cvcontactszone}[1]{\qdget{cvcontactszone#1}}
+\newcommand*{\setcvcontact}[2]{\expandafter\qdset{cvcontact#1}{#2}}
+\newcommand*{\cvcontact}[1]{\qdget{cvcontact#1}}
 \newcommand*{\cvcontactlink}[1]{
 \IfEqCase{#1}{
 {email}{\qdlink{mailto:}{cvcontact#1}{}}%
@@ -110,7 +110,7 @@
 {googleplus}{\qdlink{https://plus.google.com/}{cvcontact#1}{}}%
 }[{\qdget{cvcontact#1}}]
 }
-\newcommand*{\ifcvcontact}[3][]{\qdif{cvcontact#1}{#2}{#3}}
+\newcommand*{\ifcvcontact}[3]{\qdif{cvcontact#1}{#2}{#3}}
 
 \newcounter{assets}
 \setcounter{assets}{1}

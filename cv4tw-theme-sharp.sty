@@ -16,11 +16,11 @@
 	\hspace*{-1\marginparwidth}\colorbox{title}{\hspace*{\marginparwidth}\begin{minipage}{\paperwidth}
 	\@ifundefined{@cvpicture}{}{\begin{minipage}[m]{\cvpicturewidth}\fboxsep=1mm\fboxrule=0.05pt\fcolorbox{black}{white}{\includegraphics[keepaspectratio=true,width=\cvpicturewidth]{\@cvpicture}}\end{minipage}\hspace{2ex}}
 	\begin{minipage}[m]{\cvtitlewidth}
-	\mystyle[name]\color{contrast}{\@ifundefined{@cvacademictitle}{}{\small\@cvacademictitle~}}\@cvfirstname~\@cvlastname
-	\@ifundefined{@cvtitle}{}{{\\\mystyle[title]\color{contrast}\@cvtitle\par}}
+	\mystyle{name}\color{contrast}{\@ifundefined{@cvacademictitle}{}{\small\@cvacademictitle~}}\@cvfirstname~\@cvlastname
+	\@ifundefined{@cvtitle}{}{{\\\mystyle{title}\color{contrast}\@cvtitle\par}}
 	\end{minipage}\hfill
 	\begin{minipage}[m]{\cvassetspanelwidth}
-		\ifcvasset[0]{\begin{list}{\mystyle[assetbullet]}{\setlength{\leftmargin}{\cvassetspanelleftmargin}}
+		\ifcvasset{0}{\begin{list}{\mystyle{assetbullet}}{\setlength{\leftmargin}{\cvassetspanelleftmargin}}
 \setlength{\itemsep}{\cvassetitemsep}
 \renderassetifdefined{0}
 \renderassetifdefined{1}
@@ -36,30 +36,30 @@
 	\end{minipage}
 	\end{minipage}}\\[3ex]
 	\colorlet{icons}{iconstemp}
-	\@ifundefined{@cvquote}{}{{\centering\mystyle[quote]\@cvquote\\[2ex]}}
+	\@ifundefined{@cvquote}{}{{\centering\mystyle{quote}\@cvquote\\[2ex]}}
 	\begin{minipage}[t]{0.3\textwidth} \begin{tabular}[t]{@{}c@{}l@{}}
-\cvcontactszone[main]
+\cvcontactszone{main}
 \end{tabular}
 	\end{minipage}
 \hfill
 	\begin{minipage}[t]{0.3\textwidth} \begin{tabular}[t]{@{}c@{}l@{}}
-\cvcontactszone[social]
+\cvcontactszone{social}
 \end{tabular}
 	\end{minipage}
 \hfill
 	\begin{minipage}[t]{0.3\textwidth} \begin{tabular}[t]{@{}c@{}l@{}}
-\cvcontactszone[extra]
+\cvcontactszone{extra}
 \end{tabular}
 	\end{minipage}
 }
 
-\renewcommand*{\renderasset}[1]{\item{\mystyle[asset]\color{contrast} \cvasset[#1]}}
+\renewcommand*{\renderasset}[1]{\item{\mystyle{asset}\color{contrast} \cvasset{#1}}}
 
-\renewcommand*{\renderassetifdefined}[1]{\ifcvasset[#1]{\renderasset{#1}}{\ignorespaces}}
+\renewcommand*{\renderassetifdefined}[1]{\ifcvasset{#1}{\renderasset{#1}}{\ignorespaces}}
 
-\renewcommand*{\rendercontact}[1]{\mystyle[#1bullet] & \begin{tabular}[t]{>{\mystyle[#1]}l}\cvcontactlink{#1}\end{tabular} \\[0.3em]}
+\renewcommand*{\rendercontact}[1]{\mystyle{#1bullet} & \begin{tabular}[t]{>{\mystyle{#1}}l}\cvcontactlink{#1}\end{tabular} \\[0.3em]}
 
-\renewcommand*{\rendercontactifdefined}[1]{\ifcvcontact[#1]{\rendercontact{#1}}{\ignorespaces}}
+\renewcommand*{\rendercontactifdefined}[1]{\ifcvcontact{#1}{\rendercontact{#1}}{\ignorespaces}}
 
 
 \endinput
