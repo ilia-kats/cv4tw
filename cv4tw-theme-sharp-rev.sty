@@ -1,6 +1,6 @@
 %Useful lengths
 \newlength{\cvtitlewidth}\setlength{\cvtitlewidth}{8cm}
-\newlength{\cvnamewidth}\setlength{\cvnamewidth}{4cm}
+\newlength{\cvnamewidth}\setlength{\cvnamewidth}{4.5cm}
 \newlength{\cvpicturewidth}\setlength{\cvpicturewidth}{2.4cm}
 \newlength{\cvassetspanelwidth}\setlength{\cvassetspanelwidth}{0.25\paperwidth}
 \newlength{\cvcontactspanelwidth}
@@ -26,33 +26,35 @@
             {}%
             {%
                 \setlength{\cvcontactspanelwidth}{\cvcontactspanelwidth - \cvpicturewidth - \cvhspace}%
-                \begin{minipage}[t]{\cvpicturewidth}%
+                \begin{minipage}[c]{\cvpicturewidth}%
                     \vspace{0pt}%
                     \fboxsep=1mm\fboxrule=0.05pt\fcolorbox{black}{white}{\includegraphics[keepaspectratio=true,width=\cvpicturewidth]{\@cvpicture}}%
                 \end{minipage}%
             \hspace{\cvhspace}}%
-        \begin{minipage}[t]{\cvnamewidth}%
-            \vspace{0pt}%
+        \begin{minipage}[c]{\cvnamewidth}%
+            %\vspace{0pt}%
             \leavevmode\mystyle{name}\color{contrast}{\@ifundefined{@cvacademictitle}{}{\small\@cvacademictitle~}}\@cvfirstname~\@cvlastname
             \@ifundefined{@cvtitle}{}{{\\\mystyle{title}\color{contrast}\@cvtitle\par}}
         \end{minipage}%
+        \begin{minipage}[c]{\cvcontactspanelwidth}
         \begin{minipage}[t]{\cvmaincontactspanelfactor\cvcontactspanelwidth}
-            \vspace{0pt}
+            \vspace{0pt}%
             \begin{tabular}[t]{@{}c@{}l@{}}
                 \cvcontactszone{main}
             \end{tabular}\hfill
         \end{minipage}%\hfill%
         \begin{minipage}[t]{\cvsocialcontactspanelfactor\cvcontactspanelwidth}
-            \vspace{0pt}\hfill
+            \vspace{0pt}\hfill%
             \begin{tabular}[t]{@{}c@{}l@{}}
                 \cvcontactszone{social}
             \end{tabular}\hfill
-        \end{minipage}%\hfill%
+        \end{minipage}%\hfill%%
         \begin{minipage}[t]{\cvextracontactspanelfactor\cvcontactspanelwidth}
-            \vspace{0pt}\hfill
+            \vspace{0pt}\hfill%
             \begin{tabular}[t]{@{}c@{}l@{}}
                 \cvcontactszone{extra}
             \end{tabular}
+        \end{minipage}%
         \end{minipage}%
     \vspace*{2\cvassetitemsep}
     \end{minipage}\hspace*{\marginparwidth}}
