@@ -121,6 +121,7 @@
 \renewcommand*{\section}[1]{ }
 \renewcommand*{\subsection}[1]{ }
 \newcommand*{\story}[5]{ }
+\newcommand*{\cvreference}[7]{ }
 \newcommand*{\renderasset}{ }
 \newcommand*{\renderassetifdefined}{ }
 \newcommand*{\rendercontact}{ }

@@ -90,6 +90,8 @@
 \newlength{\cvmissionsitemsep}\setlength{\cvmissionsitemsep}{0em}
 \newlength{\cvfieldsep}\setlength{\cvfieldsep}{0em}
 \newlength{\sectionrule}\setlength{\sectionrule}{\textwidth}
+\newlength{\cvreferencewidth}\setlength{\cvreferencewidth}{0.32\textwidth}
+\newlength{\cvreferencehang}\setlength{\cvreferencehang}{0.55cm}
 \setlength{\parindent}{0cm}
 
 \newcounter{currentrate}
@@ -130,6 +132,44 @@
 		\fi
 	\end{minipage}
 	\end{flushleft}
+}
+
+%\cvreference{Name}{ToMe}{Address}{Phone}{Cellphone}{Mail}{WebSite}
+%              1     2       3      4       5        6      7
+\renewcommand*{\cvreference}[7]{%
+    \begin{minipage}[t]{\cvreferencewidth}%
+        %\vspace{0pt}%
+        {\hangindent=\cvreferencehang\hangafter=1\leavevmode{\mystyle{cvreferencename}\href{#7}{#1}}{\mystyle{cvreferencedescription}~(#2)\par}
+        {
+            \if\relax\detokenize{#3}\relax
+                \relax
+            \else
+                \mystyle{addressbullet}\mystyle{cvreference}\begin{tabular}[t]{>{\mystyle{address}\mystyle{cvreference}}l}#3\end{tabular}\par
+            \fi
+        }}
+        {
+            \if\relax\detokenize{#6}\relax
+                \relax
+            \else
+                \mystyle{emailbullet}\mystyle{cvreference}\begin{tabular}[t]{>{\mystyle{email}\mystyle{cvreference}}l}\href{mailto:#6}{#6}\end{tabular}\par
+            \fi
+        }
+        {
+            \if\relax\detokenize{#4}\relax
+                \relax
+            \else
+                \mystyle{phonebullet}\mystyle{cvreference}\begin{tabular}[t]{>{\mystyle{phone}\mystyle{cvreference}}l}#4\end{tabular}\par
+            \fi
+        }
+        {
+            \if\relax\detokenize{#5}\relax
+                \relax
+            \else
+                \mystyle{cellphonebullet}\mystyle{cvreference}\begin{tabular}[t]{>{\mystyle{cellphone}\mystyle{cvreference}}l}#5\end{tabular}\par
+            \fi
+        }
+    \end{minipage}%
+    \ignorespaces
 }
 
 % Rate fields related to a profile
