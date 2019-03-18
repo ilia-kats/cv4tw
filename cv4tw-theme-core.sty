@@ -139,7 +139,7 @@
 \renewcommand*{\cvreference}[7]{%
     \begin{minipage}[t]{\cvreferencewidth}%
         %\vspace{0pt}%
-        {\hangindent=\cvreferencehang\hangafter=1\leavevmode{\mystyle{cvreferencename}\href{#7}{#1}}{\mystyle{cvreferencedescription}~(#2)\par}
+        {\hangindent=\cvreferencehang\hangafter=1\leavevmode{\mystyle{cvreferencename}\href{#7}{#1}}{\ifx&#2&\else\mystyle{cvreferencedescription}~(#2)\fi\par}
         {
             \if\relax\detokenize{#3}\relax
                 \relax
