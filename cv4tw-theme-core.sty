@@ -6,7 +6,7 @@
 \RequirePackage{needspace}
 \RequirePackage{amssymb}
 \RequirePackage{fontspec}
-\RequirePackage{fontawesome}
+\RequirePackage{fontawesome5}
 \RequirePackage{academicons}
 \RequirePackage{realboxes}
 \RequirePackage{array}
@@ -104,10 +104,10 @@
 % Section title
 \renewcommand*{\section}[1]{
 \needspace{4\baselineskip}
-\begin{center}
+\begin{center}%
   {\mystyle{sectiontitle} #1}\\[-0.8em]
-  {\color{sectionrule}\rule{\sectionrule}{0.05pt}}
-\end{center}
+  {\color{sectionrule}\rule{\sectionrule}{0.05pt}}%
+\end{center}%
 }
 
 % Write a story relevant about you (job, education, journey, ...)
